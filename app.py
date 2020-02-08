@@ -9,7 +9,7 @@ import os
 MY_TOKEN = '951399920:AAEyHcV6BbFwekwMEd48QBhsThiYKG7a0bQ'
 request_url = 'https://random.dog/woof.json'
 
-app = Flaks(__name__)
+app = Flask(__name__)
 
 def getURL():
     contents = requests.get(request_url).json()
