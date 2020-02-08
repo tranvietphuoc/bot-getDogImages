@@ -2,14 +2,11 @@ from telegram.ext import Updater, CommandHandler, InlineQueryHandler, Dispatcher
 from telegram.ext.dispatcher import run_async
 import requests
 import re
-from flask import Flask
 import os
 
 
 MY_TOKEN = '951399920:AAEyHcV6BbFwekwMEd48QBhsThiYKG7a0bQ'
 request_url = 'https://random.dog/woof.json'
-
-app = Flask(__name__)
 
 def getURL():
     contents = requests.get(request_url).json()
@@ -31,26 +28,17 @@ def dog(update, context):
     chat_id = update.message.chat_id
     context.bot.send_photo(chat_id=chat_id, photo=image)
 
-@app.route('/')
 def main():
-    # port = int(os.environ.get('PORT', 5000))
     updater = Updater(MY_TOKEN, use_context=True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('dog', dog))
     updater.start_polling()
-
-    # updater.start_webhook(
-    #     listen='0.0.0.0',
-    #     port=port,
-    #     url_path=MY_TOKEN
-    # )
-    # updater.bot.set_webhook("https://dogs-bot.herokuapp.com" + MY_TOKEN)
     updater.idle()
 
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     try:
-        app.run(host='0.0.0.0', port=port, debug=True)
+        main()
     except KeyboardInterrupt:
         exit()
