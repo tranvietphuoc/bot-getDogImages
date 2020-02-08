@@ -2,10 +2,10 @@ from telegram.ext import Updater, CommandHandler, InlineQueryHandler, Dispatcher
 from telegram.ext.dispatcher import run_async
 import requests
 import re
-# from flask import Flask, request
+from flask import Flask, request
+import os
 
-
-# app = Flask(__name__)
+app = Flask(__name__)
 
 MY_TOKEN = '951399920:AAEyHcV6BbFwekwMEd48QBhsThiYKG7a0bQ'
 request_url = 'https://random.dog/woof.json'
@@ -37,11 +37,11 @@ def main():
     updater.start_polling()
     updater.idle()
 
-# @app.route('/')
-# def home():
-#     main()
+@app.route('/')
+def home():
+    main()
 
 
 if __name__ == '__main__':
-    # app.run(debug=True)
-    main()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True, use_reloader=False)
