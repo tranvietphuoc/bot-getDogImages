@@ -34,7 +34,7 @@ def main():
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('dog', dog))
     updater.start_polling()
-    
+
     # updater.start_webhook(
     #     listen='0.0.0.0',
     #     port=port,
@@ -45,4 +45,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        exit()
