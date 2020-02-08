@@ -9,6 +9,7 @@ verify_ssl = true
 python-telegram-bot = "*"
 requests = "*"
 setuptools = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
