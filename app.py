@@ -33,13 +33,17 @@ def main():
     updater = Updater(MY_TOKEN, use_context=True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('dog', dog))
-    # updater.start_polling()
-    updater.start_webhook(
-        listen='0.0.0.0',
-        port=port,
-        url_path=MY_TOKEN
-    )
-    updater.bot.set_webhook("https://dogs-bot.herokuapp.com" + MY_TOKEN)
+    updater.start_polling(
+        poll_interval=2.0,
+        timeout=20,
+        allowed_update=None)
+
+    # updater.start_webhook(
+    #     listen='0.0.0.0',
+    #     port=port,
+    #     url_path=MY_TOKEN
+    # )
+    # updater.bot.set_webhook("https://dogs-bot.herokuapp.com" + MY_TOKEN)
     updater.idle()
 
 
