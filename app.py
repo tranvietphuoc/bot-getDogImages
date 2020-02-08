@@ -14,7 +14,7 @@ def getURL():
     return url
 
 def getURLImages():
-    pattern = r'([^.]*)$'  # make a string pattern
+    pattern = r'([^.]*)$'  # make a pattern to get the file extension
     allowed_ext = ['jpg', 'jpeg', 'png', 'gif']  # extension is allowed
     file_ext = ''
     while file_ext not in allowed_ext:
@@ -22,6 +22,7 @@ def getURLImages():
         file_ext = re.search(pattern, url).group(1).lower()
     return url
 
+# run dog command asynchorously
 @run_async
 def dog(update, context):
     image = getURLImages()
