@@ -29,15 +29,12 @@ def dog(update, context):
     context.bot.send_photo(chat_id=chat_id, photo=image)
 
 def main():
-    port = int(os.environ.get('PORT', 5000))
+    # port = int(os.environ.get('PORT', 5000))
     updater = Updater(MY_TOKEN, use_context=True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('dog', dog))
-    updater.start_polling(
-        poll_interval=2.0,
-        timeout=20,
-        allowed_updates=None)
-
+    updater.start_polling()
+    
     # updater.start_webhook(
     #     listen='0.0.0.0',
     #     port=port,
