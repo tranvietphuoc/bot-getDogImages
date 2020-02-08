@@ -36,7 +36,7 @@ def main():
     updater.start_polling(
         poll_interval=2.0,
         timeout=20,
-        allowed_update=None)
+        allowed_updates=None)
 
     # updater.start_webhook(
     #     listen='0.0.0.0',
