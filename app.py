@@ -2,7 +2,7 @@ from telegram.ext import Updater, CommandHandler, InlineQueryHandler, Dispatcher
 from telegram.ext.dispatcher import run_async
 import requests
 import re
-from flask import Flask, request
+from flask import Flask, request, render_template
 import os
 
 app = Flask(__name__)
@@ -17,7 +17,7 @@ def getURL():
 
 def getURLImages():
     pattern = r'([^.]*)$'  # make a string pattern
-    allowed_ext = ['jpg', 'jpeg', 'png', 'gif']
+    allowed_ext = ['jpg', 'jpeg', 'png', 'gif']  # extension is allowed
     file_ext = ''
     while file_ext not in allowed_ext:
         url = getURL()
@@ -40,6 +40,7 @@ def main():
 @app.route('/')
 def home():
     main()
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
