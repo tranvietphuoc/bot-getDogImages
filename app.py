@@ -5,7 +5,7 @@ import re
 import os
 
 
-MY_TOKEN = '951399920:AAEyHcV6BbFwekwMEd48QBhsThiYKG7a0bQ'
+MY_TOKEN = ''  # go to @botfather to make a new bot then paste the token here
 request_url = 'https://random.dog/woof.json'
 
 def getURL():
@@ -38,7 +38,6 @@ def main():
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
     try:
         main()
     except KeyboardInterrupt:
